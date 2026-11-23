@@ -68,7 +68,6 @@ verifyResult.addEventListener("click", () => {
     document.querySelector("#answers").childNodes[
       selectAnswer
     ].style.backgroundColor = "green";
-    
   } else {
     document.querySelector("#answers").childNodes[
       selectAnswer
@@ -76,19 +75,21 @@ verifyResult.addEventListener("click", () => {
     document.querySelector("#answers").childNodes[
       questions[currentQuestion].correctAnswer
     ].style.backgroundColor = "green";
-    
   }
 });
 
-nextBtn.addEventListener("click", () => {
-  if (selectAnswer <0){alert("you need to choose an answer");}
+nextBtn.addEventListener("click", (event) => {
+  if (selectAnswer < 0) {
+    alert("you need to choose an answer");
+    return;
+  }
   if (selectAnswer === questions[currentQuestion].correctAnswer) {
     selectAnswer = -1;
     finalScore++;
     score.textContent = `Score : ${finalScore}`;
   }
   currentQuestion++;
-
+  questionNumber.textContent++;
   if (currentQuestion < questions.length) {
     showQuestion();
   } else {
