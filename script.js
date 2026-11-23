@@ -64,10 +64,12 @@ const showQuestion = () => {
   }
 };
 verifyResult.addEventListener("click", () => {
+  if (selectAnswer <0){alert("you need to choose an answer");}
   if (selectAnswer === questions[currentQuestion].correctAnswer) {
     document.querySelector("#answers").childNodes[
       selectAnswer
     ].style.backgroundColor = "green";
+    selectAnswer = -1;
   } else {
     document.querySelector("#answers").childNodes[
       selectAnswer
@@ -75,6 +77,7 @@ verifyResult.addEventListener("click", () => {
     document.querySelector("#answers").childNodes[
       questions[currentQuestion].correctAnswer
     ].style.backgroundColor = "green";
+    selectAnswer = -1;
   }
 });
 
